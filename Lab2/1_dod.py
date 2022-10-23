@@ -8,7 +8,7 @@ def convert_to_10(l, p):
     for i in l:
         numbers.append(int(i))
 
-    if max(numbers) != p-1:
+    if max(numbers) > p-1:
         print('Podana liczba nie jest ' + system_of_number[p])
         sys.exit()
 
