@@ -1,6 +1,6 @@
 import sys
 
-def convert_to_10(l, p):
+def horner_to_10(l, p):
     numbers = []
     for i in l:
         numbers.append(int(i))
@@ -8,15 +8,12 @@ def convert_to_10(l, p):
     if max(numbers) > p-1:
         sys.exit('Podana liczba nie jest ' + system_of_number[p])
 
-    numbers.reverse()
-
-    number_in_10 = 0
-
-    for i in range(len(numbers)):
-        number_in_10 += numbers[i] * pow(p, i)
+    L = 0
+    for i in numbers:
+        L = L * p + i
 
     print('Podana liczba w systemie dziesiętnym wynosi: ', end='')
-    print(int(number_in_10))
+    print(int(L))
 
 
 system_of_number = {
@@ -37,7 +34,8 @@ if not liczba.isnumeric():
 
 p = int(input('Podaj system pozycyjny (2-10): '))
 
+
 if p in range(2, 11):
-    convert_to_10(liczba, p)
+    horner_to_10(liczba, p)
 else:
     print('Błędny system pozycyjny')
